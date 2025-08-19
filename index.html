@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My PayPal Shop</title>
+  <style>
+    body {
+      font-family: Calibri, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 40px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .product {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      background: #fff;
+      width: 280px;
+      margin: 20px auto;
+      text-align: center;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+    .product img {
+      max-width: 200px;
+      margin-bottom: 10px;
+    }
+    input[type="submit"] {
+      background: #0070ba;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    input[type="submit"]:hover {
+      background: #005a94;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to My Store</h1>
+
+  <!-- Product 1 -->
+  <div class="product">
+    <img src="https://commons.wikimedia.org/wiki/File:-Insert_image_here-.svg" alt="Golf Hat">
+    <h2>Exclusive Golf Hat</h2>
+    <p>$25.00 CAD</p>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="zach@backnineclub.ca">
+      <input type="hidden" name="item_name" value="Back Nine Club Tee">
+      <input type="hidden" name="amount" value="45.00">
+      <input type="hidden" name="currency_code" value="CAD">
+      <input type="submit" value="Buy Now with PayPal">
+    </form>
+  </div>
+
+  <!-- Product 2 -->
+  <div class="product">
+    <img src="https://commons.wikimedia.org/wiki/File:-Insert_image_here-.svg" alt="Golf Shirt">
+    <h2>Performance Golf Shirt</h2>
+    <p>$40.00 CAD</p>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="zach@backnineclub.ca">
+      <input type="hidden" name="item_name" value="Birdie Juice Tee">
+      <input type="hidden" name="amount" value="45.00">
+      <input type="hidden" name="currency_code" value="CAD">
+      <input type="submit" value="Buy Now with PayPal">
+    </form>
+  </div>
+
+  <!-- Product 3 -->
+  <div class="product">
+    <img src="https://commons.wikimedia.org/wiki/File:-Insert_image_here-.svg" alt="Golf Tee Pack">
+    <h2>Pack of Golf Tees</h2>
+    <p>$10.00 CAD</p>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="zach@backnineclub.ca">
+      <input type="hidden" name="item_name" value="Breakfast Ball Tee">
+      <input type="hidden" name="amount" value="45.00">
+      <input type="hidden" name="currency_code" value="CAD">
+      <input type="submit" value="Buy Now with PayPal">
+    </form>
+  </div>
+
+</body>
+</html>
