@@ -3,27 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <title>Back Nine Club Store</title>
- <style>
-body {
-    background-image: url('https://raw.githubusercontent.com/backnineclub/backnineclub.github.io/refs/heads/main/PB7.jpg');
-    background-size: cover;       /* cover whole page */
-    background-position: center;  /* center the image */
-    background-repeat: no-repeat; /* no tiling */
-    font-family: Calibri, sans-serif;
-    color: #fff;                  /* white text for contrast */
-}
+  <style>
+    body {
+      background-image: url('https://raw.githubusercontent.com/backnineclub/backnineclub.github.io/refs/heads/main/PB7.jpg');
+      background-size: cover;       
+      background-position: center;  
+      background-repeat: no-repeat; 
+      font-family: Calibri, sans-serif;
+      color: #fff;                  
+      margin: 0;
+      padding: 0;
+    }
 
-.container {
-    background: rgba(0,0,0,0.6); /* semi-transparent black overlay */
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 1000px;
-    margin: 40px auto;
-}
-   
-    h1, h2 {
-      text-align: center;
-      margin-bottom: 20px;
+    /* Navigation Bar */
+    nav {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav h1 {
+      color: #fff;
+      margin: 0;
+      font-size: 24px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Content container */
+    .container {
+      background: rgba(0,0,0,0.6); 
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    /* Product grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
     .product {
@@ -31,10 +77,9 @@ body {
       padding: 20px;
       border-radius: 10px;
       background: #fff;
-      width: 280px;
-      margin: 20px auto;
       text-align: center;
       box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      color: #000; /* black text inside product cards */
     }
 
     .product img {
@@ -54,58 +99,72 @@ body {
 
     input[type="submit"]:hover {
       background: #005a94;
-      
-</style>
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <h1>Back Nine Club</h1>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
   <div class="container">
-    <h1>Back Nine Club Store</h1>
-    <div class="grid">
+    <h1 style="text-align:center;">Back Nine Club Store</h1>
     <p style="text-align:center;">Browse our products and checkout securely with PayPal!</p>
 
-  <!-- Product 1 -->
-  <div class="product">
-    <img src="https://commons.wikimedia.org/wiki/File:-Insert_image_here-.svg" alt="Golf Hat">
-    <h2>Back Nine Club Tee</h2>
-    <p>$45.00 CAD</p>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="zach@backnineclub.ca">
-      <input type="hidden" name="item_name" value="Back Nine Club Tee">
-      <input type="hidden" name="amount" value="45.00">
-      <input type="hidden" name="currency_code" value="CAD">
-      <input type="submit" value="Buy Now!">
-    </form>
-  </div>
+    <div class="grid">
+      <!-- Product 1 -->
+      <div class="product">
+        <img src="https://commons.wikimedia.org/wiki/File:-Insert_image_here-.svg" alt="Golf Hat">
+        <h2>Back Nine Club Tee</h2>
+        <p>$45.00 CAD</p>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="zach@backnineclub.ca">
+          <input type="hidden" name="item_name" value="Back Nine Club Tee">
+          <input type="hidden" name="amount" value="45.00">
+          <input type="hidden" name="currency_code" value="CAD">
+          <input type="submit" value="Buy Now!">
+        </form>
+      </div>
 
-  <!-- Product 2 -->
-  <div class="product">
-    <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/HIOball.jpg?raw=true" alt="Golf Shirt">
-    <h2>One of a Kind Ball</h2>
-    <p>$99.00 CAD</p>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="zach@backnineclub.ca">
-      <input type="hidden" name="item_name" value="One of a Kind Ball">
-      <input type="hidden" name="amount" value="999999.00">
-      <input type="hidden" name="currency_code" value="CAD">
-      <input type="submit" value="Buy Now!">
-    </form>
-  </div>
+      <!-- Product 2 -->
+      <div class="product">
+        <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/HIOball.jpg?raw=true" alt="Golf Shirt">
+        <h2>One of a Kind Ball</h2>
+        <p>$999999.00 CAD</p>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="zach@backnineclub.ca">
+          <input type="hidden" name="item_name" value="One of a Kind Ball">
+          <input type="hidden" name="amount" value="999999.00">
+          <input type="hidden" name="currency_code" value="CAD">
+          <input type="submit" value="Buy Now!">
+        </form>
+      </div>
 
-  <!-- Product 3 -->
-  <div class="product">
-    <img src="https://commons.wikimedia.org/wiki/File:-Insert_image_here-.svg" alt="Golf Tee Pack">
-    <h2>Breakfast Ball Tee</h2>
-    <p>$45.00 CAD</p>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="zach@backnineclub.ca">
-      <input type="hidden" name="item_name" value="Breakfast Ball Tee">
-      <input type="hidden" name="amount" value="45.00">
-      <input type="hidden" name="currency_code" value="CAD">
-      <input type="submit" value="Buy Now!">
-    </form>
+      <!-- Product 3 -->
+      <div class="product">
+        <img src="https://commons.wikimedia.org/wiki/File:-Insert_image_here-.svg" alt="Golf Tee Pack">
+        <h2>Breakfast Ball Tee</h2>
+        <p>$45.00 CAD</p>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="zach@backnineclub.ca">
+          <input type="hidden" name="item_name" value="Breakfast Ball Tee">
+          <input type="hidden" name="amount" value="45.00">
+          <input type="hidden" name="currency_code" value="CAD">
+          <input type="submit" value="Buy Now!">
+        </form>
+      </div>
+    </div>
   </div>
 
 </body>
