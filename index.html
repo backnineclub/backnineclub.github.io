@@ -163,12 +163,12 @@
           <input type="hidden" name="on0_label" value="Size">
 
           <label for="color-1">Color:</label>
-          <select name="on1" id="color-1">
-            <option value="Black">Ivory</option>
-            <option value="White">Bay</option>
-            <option value="Green">Blue Jean</option>
+          <select name="on1" id="color-1" onchange="updateImageByColor(this.value, 'main-img-1')">
+            <option value="Ivory">Ivory</option>
+            <option value="Bay">Bay</option>
+            <option value="Blue Jean">Blue Jean</option>
           </select>
-          <input type="hidden" name="on1_label" value="Color">
+          <input type="hidden" name="on1_label" value="Color">        
 
           <label for="quantity-1">Quantity:</label>
           <input type="number" id="quantity-1" name="quantity" value="1" min="1">
@@ -257,9 +257,9 @@
 
           <label for="color-3">Color:</label>
           <select name="on1" id="color-3">
-            <option value="Black">Ivory</option>
-            <option value="White">Bay</option>
-            <option value="Green">Blue Jean</option>
+            <option value="Ivory">Ivory</option>
+            <option value="Bay">Bay</option>
+            <option value="Blue Jean">Blue Jean</option>
           </select>
           <input type="hidden" name="on1_label" value="Color">
 
