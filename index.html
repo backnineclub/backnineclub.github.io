@@ -135,6 +135,7 @@
       <div class="product">
         <img id="main-img-1" src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true" alt="Back Nine Club Tee" class="main-img">
         <div class="thumbnails">
+          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true" onclick="swapImage('main-img-1', this.src)">
           <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory2.jpg?raw=true" onclick="swapImage('main-img-1', this.src)">
           <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/Bay1.jpg?raw=true" onclick="swapImage('main-img-1', this.src)">
           <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/Bay2.jpg?raw=true" onclick="swapImage('main-img-1', this.src)">
@@ -175,6 +176,23 @@
           <input type="submit" value="Add to Cart">
         </form>
       </div>
+
+<script>
+    // Swap main image when thumbnail clicked
+    function changeImage(mainImageId, newSrc) {
+      document.getElementById(mainImageId).src = newSrc;
+    }
+
+    // Change main image when selecting a color
+    function updateImageByColor(color, mainImageId) {
+      let imageMap = {
+        "Ivory": "https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true",
+        "Bay": "https://github.com/backnineclub/backnineclub.github.io/blob/main/Bay1.jpg?raw=true",
+        "Blue Jean": "https://github.com/backnineclub/backnineclub.github.io/blob/main/BlueJean1.jpg?raw=true"
+      };
+      document.getElementById(mainImageId).src = imageMap[color];
+    }
+</script>
 
       <!-- Product 2 -->
       <div class="product">
