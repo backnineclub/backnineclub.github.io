@@ -269,19 +269,19 @@
         </form>
       </div>
 <script>
-    // Swap main image when thumbnail clicked
-    function changeImage(mainImageId, newSrc) {
-      document.getElementById(mainImageId).src = newSrc;
+    // Swap BreakyBall when thumbnail clicked
+    function changeImage(BreakyBall, newSrc) {
+      document.getElementById(BreakyBall).src = newSrc;
     }
 
-    // Change main image when selecting a color
-    function updateImageByColor(color, mainImageId) {
+    // Change BreakyBall when selecting a color
+    function updateImageByColor(color, BreakyBall) {
       let imageMap = {
         "Ivory": "https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory2.jpg?raw=true",
         "Bay": "https://github.com/backnineclub/backnineclub.github.io/blob/main/Bay2.jpg?raw=true",
         "Blue Jean": "https://github.com/backnineclub/backnineclub.github.io/blob/main/BlueJean2.jpg?raw=true"
       };
-      document.getElementById(mainImageId).src = imageMap[color];
+      document.getElementById(BreakyBall).src = imageMap[color];
     }
 </script>
     </div>
