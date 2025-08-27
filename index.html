@@ -328,6 +328,7 @@
     },
   };
 
+  // Setup product thumbnails + switching
   function setupProduct(productId) {
     const product = document.getElementById(productId);
     const mainImg = product.querySelector(".main-img");
@@ -351,21 +352,71 @@
         thumbs.appendChild(img);
       });
     }
-
-    // Initial load
     loadThumbnails(colorSelect.value);
-
-    // Change thumbnails when color changes
     colorSelect.addEventListener("change", (e) => {
       loadThumbnails(e.target.value);
     });
   }
-
-  // Setup each product
   setupProduct("product1");
   setupProduct("product2");
   setupProduct("product3");
-</script>
 
+  // Cart functionality
+  let cart = [];
+
+  document.querySelectorAll(".add-cart").forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      const product = btn.closest(".product");
+      const title = product.querySelector("h2").innerText;
+      const color = product.querySelector(".color-select").value;
+      const size = product.querySelector(".size-select").value;
+      const img = product.querySelector(".main-img").src;
+      cart.push({title, color, size, img, price: 25});
+      renderCart();
+    });
+  });
+
+  function renderCart() {
+    const cartItems = document.getElementById("cartItems");
+    cartItems.innerHTML = "";
+    cart.forEach((item, i) => {
+      cartItems.innerHTML += `
+        <div class="cart-item">
+          <strong>${item.title}</strong><br>
+          Color: ${item.color}, Size: ${item.size}<br>
+          <img src="${item.img}" width="60">
+        </div>
+      `;
+    });
+
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: cart.reduce((sum, item) => sum + item.price, 0).toString()
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert("Order completed by " + details.payer.name.given_name);
+          cart = [];
+          renderCart();
+        });
+      }
+    }).render('#paypal-button-container');
+  }
+
+  // Cart modal open/close
+  const cartOverlay = document.getElementById("cartOverlay");
+  document.getElementById("viewCart").addEventListener("click", () => {
+    cartOverlay.style.display = "flex";
+  });
+  document.getElementById("closeCart").addEventListener("click", () => {
+    cartOverlay.style.display = "none";
+  });
+</script>
 </body>
 </html>
