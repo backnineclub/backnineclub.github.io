@@ -24,6 +24,11 @@
       position: sticky;
       top: 0;
     }
+    .navbar.logo img {
+      height: 50px; /*adjust to fit*/
+      width: auto;
+      border-radius: 8px; /* optional: rounded edges */
+    }
     .navbar h1 { margin: 0; color:#fff; }
     .navbar a { color:#fff; margin:0 10px; text-decoration:none; }
     .navbar button {
@@ -159,13 +164,19 @@
 <body>
   <!-- Navbar -->
   <div class="navbar">
-    <h1>Back Nine Club</h1>
+    <div class="logo">
+      <a href="index.html">
+        <img src="https://raw.githubusercontent.com/backnineclub/backnineclub.github.io/refs/heads/main/back%20logo%20.jpg" alt="Back Nine Club Logo">
+      </a>
+   </div>
+   <div class="nav-links"> 
     <a href="#">Home</a>
     <a href="#">Shop</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
     <button onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
   </div>
+<div/>
 
   <!-- Cart Sidebar -->
   <div id="cart" class="cart">
