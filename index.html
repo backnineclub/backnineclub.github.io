@@ -12,6 +12,7 @@
       font-family: Calibri, sans-serif;
       color: #fff;
       margin: 0;
+      padding: 0;
     }
 
     /* Navbar */
@@ -23,7 +24,8 @@
       gap: 30px;
     }
     .navbar a {
-      color: #fff;
+      color: white;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
     }
@@ -55,7 +57,7 @@
       background: #fff;
       text-align: center;
       box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-      color: #000;
+      color: black;
     }
 
     .product img.main-img {
@@ -108,7 +110,7 @@
       <!-- Product 1 -->
       <div class="product">
         <h2>Back Nine Club Tee</h2>
-        <img id="clubTeeMain" src="" alt="Back Nine Club Tee" class="main-img">
+        <img id="clubTeeMain" src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true" alt="Back Nine Club Tee" class="main-img">
         <div id="clubTeeThumbs" class="thumbnails"></div>
 
         <label>Color:</label>
@@ -116,7 +118,7 @@
           <option value="ivory">Ivory</option>
           <option value="bay">Bay</option>
           <option value="blue">Blue Jean</option>
-        </select>
+        </select><br><br>
 
         <label>Size:</label>
         <select id="clubTeeSize">
@@ -125,11 +127,11 @@
           <option>L</option>
           <option>XL</option>
           <option>XXL</option>
-        </select>
+        </select><br><br>
 
         <p>$42.00 CAD</p>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-          <input type="hidden" name="cmd" value="_xclick">
+        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_cart">
           <input type="hidden" name="business" value="zach@backnineclub.ca">
           <input type="hidden" name="item_name" value="Back Nine Club Tee">
           <input type="hidden" name="amount" value="42.00">
@@ -141,7 +143,7 @@
       <!-- Product 2 -->
       <div class="product">
         <h2>One of a Kind Ball</h2>
-        <img id="ballMain" src="" alt="Ball" class="main-img">
+        <img id="ballMain" src="https://github.com/backnineclub/backnineclub.github.io/blob/main/HIOball.jpg?raw=true" alt="Ball" class="main-img">
         <div id="ballThumbs" class="thumbnails"></div>
 
         <label>Color:</label>
@@ -168,14 +170,14 @@
       <!-- Product 3 -->
       <div class="product">
         <h2>Breakfast Ball Tee</h2>
-        <img id="breakfastMain" src="" alt="Breakfast Tee" class="main-img">
+        <img id="breakfastMain" src="https://github.com/backnineclub/backnineclub.github.io/blob/main/Bay1.jpg?raw=true" alt="Breakfast Tee" class="main-img">
         <div id="breakfastThumbs" class="thumbnails"></div>
 
         <label>Color:</label>
         <select id="breakfastColor" onchange="updateProductGallery('breakfast')">
           <option value="bay">Bay</option>
           <option value="blue">Blue Jean</option>
-        </select>
+        </select><br><br>
 
         <label>Size:</label>
         <select id="breakfastSize">
@@ -184,10 +186,10 @@
           <option>L</option>
           <option>XL</option>
           <option>XXL</option>
-        </select>
+        </select><br><br>
 
         <p>$42.00 CAD</p>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
           <input type="hidden" name="cmd" value="_xclick">
           <input type="hidden" name="business" value="zach@backnineclub.ca">
           <input type="hidden" name="item_name" value="Breakfast Ball Tee">
@@ -200,6 +202,18 @@
     </div>
   </div>
 
+
+<!-- View Cart Button -->
+    <div style="text-align:center; margin-top: 30px;">
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_cart">
+        <input type="hidden" name="business" value="zach@backnineclub.ca">
+        <input type="hidden" name="display" value="1">
+        <input type="submit" value="View Cart">
+      </form>
+    </div>
+  </div>
+  
 <script>
   // Image sets for each product & color
   const productGalleries = {
