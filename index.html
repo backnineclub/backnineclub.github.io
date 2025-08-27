@@ -245,7 +245,7 @@
           <input type="hidden" name="item_name" value="One of a Kind Ball">
           <input type="hidden" name="amount" value="999,999.00">
           <input type="hidden" name="currency_code" value="CAD">
-          <input type="submit" value="Add to Cart">
+          <input type="submit" value="Add to Cart" background="#005a94">
         </form>
       </div>
 
@@ -328,74 +328,44 @@
     },
   };
 
-  function updateProductGallery(productId) {
-    const colorSelect = document.getElementById(productId + "Color");
-    const color = colorSelect.value;
-    const mainImg = document.getElementById(productId + "Main");
-    const thumbsDiv = document.getElementById(productId + "Thumbs");
+  function setupProduct(productId) {
+    const product = document.getElementById(productId);
+    const mainImg = product.querySelector(".main-img");
+    const thumbs = product.querySelector(".thumbnails");
+    const colorSelect = product.querySelector(".color-select");
 
-    const images = productGalleries[productId][color];
+    function loadThumbnails(color) {
+      thumbs.innerHTML = "";
+      productImages[productId][color].forEach((src, i) => {
+        const img = document.createElement("img");
+        img.src = src;
+        if (i===0) {
+          img.classList.add("active");
+          mainImg.src = src;
+        }
+        img.addEventListener("click", () => {
+          mainImg.src = src;
+          thumbs.querySelectorAll("img").forEach(t => t.classList.remove("active"));
+          img.classList.add("active");
+        });
+        thumbs.appendChild(img);
+      });
+    }
 
-    // Set main image
-    mainImg.src = images[0];
+    // Initial load
+    loadThumbnails(colorSelect.value);
 
-    // Clear old thumbs
-    thumbsDiv.innerHTML = "";
-
-    // Add new thumbs
-    images.forEach((src) => {
-      const thumb = document.createElement("img");
-      thumb.src = src;
-      thumb.onclick = () => { mainImg.src = src; };
-      thumbsDiv.appendChild(thumb);
+    // Change thumbnails when color changes
+    colorSelect.addEventListener("change", (e) => {
+      loadThumbnails(e.target.value);
     });
   }
 
-  // Initialize galleries on load
-  window.onload = () => {
-    updateProductGallery("clubTee");
-    updateProductGallery("ball");
-    updateProductGallery("driveTee");
-  };
+  // Setup each product
+  setupProduct("product1");
+  setupProduct("product2");
+  setupProduct("product3");
 </script>
 
-<script>
-    let cart = [];
-    function toggleCart() {
-      document.getElementById('cart').classList.toggle('active');
-    }
-
-    function addToCart(name, price, size='', color='') {
-      cart.push({name, price, size, color});
-      updateCart();
-    }
-
-    function updateCart() {
-      const cartItems = document.getElementById('cart-items');
-      cartItems.innerHTML = '';
-      let total = 0;
-      let paypalHTML = '';
-      cart.forEach((item, i) => {
-        total += item.price;
-        cartItems.innerHTML += `<div class="cart-item">
-          <strong>${item.name}</strong> - $${item.price} CAD<br>
-          ${item.size ? 'Size: ' + item.size + '<br>' : ''}
-          ${item.color ? 'Color: ' + item.color + '<br>' : ''}
-        </div>`;
-        paypalHTML += `
-          <input type="hidden" name="item_name_${i+1}" value="${item.name} ${item.size} ${item.color}">
-          <input type="hidden" name="amount_${i+1}" value="${item.price}">
-          <input type="hidden" name="quantity_${i+1}" value="1">`;
-      });
-      document.getElementById('cart-total').innerText = total.toFixed(2);
-      document.getElementById('cart-count').innerText = cart.length;
-      document.getElementById('paypal-items').innerHTML = paypalHTML;
-    }
-      // Redirect to PayPal with cart details
-      const businessEmail = "zach@backnineclub.ca";
-      const url = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${businessEmail}&item_name=${encodeURIComponent(itemsDesc)}&amount=${total}&currency_code=CAD`;
-      window.location.href = url;
-    }
-  </script>
 </body>
 </html>
