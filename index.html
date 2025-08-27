@@ -31,6 +31,53 @@
     }
     .navbar a:hover { color: #ddd; }
 
+    .cart-btn {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      background: #0070ba;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .cart-btn:hover {
+      background: #005a94;
+    }
+
+    .cart {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 350px;
+      height: 100%;
+      background: white;
+      color: black;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.4);
+      transition: right 0.3s ease;
+      padding: 20px;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .cart.open {
+      right: 0;
+    }
+
+    .cart h2 {
+      margin-top: 0;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .cart-total {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
     .container {
       background: rgba(0,0,0,0.6);
       padding: 20px;
@@ -99,16 +146,6 @@
     <a href="#">Shop</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
-  <!-- View Cart Button -->
-    <div style="text-align:center; margin-top: 30px;">
-      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_cart">
-        <input type="hidden" name="business" value="zach@backnineclub.ca">
-        <input type="hidden" name="display" value="1">
-        <input type="submit" value="View Cart">
-      </form>
-    </div>
-  </div>
   
   </div>
 
