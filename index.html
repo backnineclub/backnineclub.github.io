@@ -25,10 +25,13 @@
       top: 0;
     }
     .logo img {
-      height: 30px; 
-      width: auto;
+      height: 50px;      /* adjust as needed */
+      width: auto;       /* keeps aspect ratio */
       border-radius: 8px; /* optional: rounded edges */
     }
+    .navbar h1 {
+      margin: 0;
+      color:#fff; }
     .navbar a {
       color:#fff;
       margin:0 10px;
@@ -44,9 +47,7 @@
       cursor: pointer;
       font-size: 16px;
     }
-    .navbar button:hover {
-      background: #005a94; 
-    }
+    .navbar button:hover { background: #005a94; }
 
     /* Container & Product Grid */
     .container {
@@ -168,21 +169,21 @@
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <div class="navbar">
-    <div class="logo">
-      <a href="index.html">
-        <img src="https://raw.githubusercontent.com/backnineclub/backnineclub.github.io/refs/heads/main/back%20logo%20.jpg" alt="Back Nine Club Logo">
-      </a>
-   </div>
-   <div class="nav-links"> 
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo">
+    <a href="index.html">
+      <img src="https://raw.githubusercontent.com/backnineclub/backnineclub.github.io/main/logo.png" alt="Back Nine Club Logo">
+    </a>
+  </div>
+  <div class="nav-links">
     <a href="#">Home</a>
     <a href="#">Shop</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
     <button onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
   </div>
-<div/>
+</div>
 
   <!-- Cart Sidebar -->
   <div id="cart" class="cart">
