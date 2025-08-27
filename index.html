@@ -140,12 +140,28 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navbar -->
   <div class="navbar">
     <a href="#">Home</a>
     <a href="#">Shop</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
+    <div class="cart-btn" onclick="toggleCart()">🛒 Cart</div>
+  </div>
+
+  <!-- Cart Sidebar -->
+  <div id="cart" class="cart">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <p class="cart-total">Total: $<span id="cart-total">0.00</span> CAD</p>
+    <form id="paypal-form" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <input type="hidden" name="cmd" value="_cart">
+      <input type="hidden" name="upload" value="1">
+      <input type="hidden" name="business" value="zach@backnineclub.ca">
+      <div id="paypal-items"></div>
+      <input type="submit" value="Checkout with PayPal">
+    </form>
+  </div>
   
   </div>
 
@@ -318,6 +334,57 @@
     updateProductGallery("ball");
     updateProductGallery("breakfast");
   };
+</script>
+
+<script>
+    // Toggle cart sidebar
+    function toggleCart() {
+      document.getElementById("cart").classList.toggle("open");
+    }
+
+    let cart = [];
+    let itemIndex = 1;
+
+    function addToCart(name, price, sizeId=null, colorId=null) {
+      const size = sizeId ? document.getElementById(sizeId).value : "";
+      const color = colorId ? document.getElementById(colorId).value : "";
+      const item = { name, price, size, color };
+
+      cart.push(item);
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItemsDiv = document.getElementById("cart-items");
+      const paypalItemsDiv = document.getElementById("paypal-items");
+      const totalEl = document.getElementById("cart-total");
+
+      cartItemsDiv.innerHTML = "";
+      paypalItemsDiv.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price;
+
+        // Show item in sidebar
+        cartItemsDiv.innerHTML += `
+          <div class="cart-item">
+            ${item.name} - $${item.price.toFixed(2)} CAD<br>
+            ${item.size ? "Size: " + item.size + "<br>" : ""}
+            ${item.color ? "Color: " + item.color + "<br>" : ""}
+          </div>
+        `;
+
+        // Add item to PayPal hidden form
+        paypalItemsDiv.innerHTML += `
+          <input type="hidden" name="item_name_${index+1}" value="${item.name} ${item.size} ${item.color}">
+          <input type="hidden" name="amount_${index+1}" value="${item.price.toFixed(2)}">
+          <input type="hidden" name="quantity_${index+1}" value="1">
+        `;
+      });
+
+      totalEl.textContent = total.toFixed(2);
+    }
 </script>
 
 </body>
