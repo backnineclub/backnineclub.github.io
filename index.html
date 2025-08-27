@@ -99,6 +99,17 @@
     <a href="#">Shop</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
+  <!-- View Cart Button -->
+    <div style="text-align:center; margin-top: 30px;">
+      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_cart">
+        <input type="hidden" name="business" value="zach@backnineclub.ca">
+        <input type="hidden" name="display" value="1">
+        <input type="submit" value="View Cart">
+      </form>
+    </div>
+  </div>
+  
   </div>
 
   <div class="container">
@@ -202,18 +213,6 @@
     </div>
   </div>
 
-
-<!-- View Cart Button -->
-    <div style="text-align:center; margin-top: 30px;">
-      <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_cart">
-        <input type="hidden" name="business" value="zach@backnineclub.ca">
-        <input type="hidden" name="display" value="1">
-        <input type="submit" value="View Cart">
-      </form>
-    </div>
-  </div>
-  
 <script>
   // Image sets for each product & color
   const productGalleries = {
