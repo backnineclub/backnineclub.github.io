@@ -133,14 +133,14 @@
 
       <!-- Product 1 -->
       <div class="product">
-        <img id="main-img-1" src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true" alt="Back Nine Club Tee" class="main-img">
+        <img id="ClubTee" src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true" alt="Back Nine Club Tee" class="main-img">
         <div class="thumbnails">
-          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true" onclick="swapImage('main-img-1', this.src)">
-          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory2.jpg?raw=true" onclick="swapImage('main-img-1', this.src)">
-          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/Bay1.jpg?raw=true" onclick="swapImage('main-img-1', this.src)">
-          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/Bay2.jpg?raw=true" onclick="swapImage('main-img-1', this.src)">
-          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/BlueJean1.jpg?raw=true" onclick="swapImage('main-img-1', this.src)">
-          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/BlueJean2.jpg?raw=true" onclick="swapImage('main-img-1', this.src)">
+          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true" onclick="swapImage('ClubTee', this.src)">
+          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory2.jpg?raw=true" onclick="swapImage('ClubTee', this.src)">
+          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/Bay1.jpg?raw=true" onclick="swapImage('ClubTee', this.src)">
+          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/Bay2.jpg?raw=true" onclick="swapImage('ClubTee', this.src)">
+          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/BlueJean1.jpg?raw=true" onclick="swapImage('ClubTee', this.src)">
+          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/BlueJean2.jpg?raw=true" onclick="swapImage('ClubTee', this.src)">
         </div>
         <h2>Back Nine Club Tee</h2>
         <p><strong>$42.00 CAD</strong></p>
@@ -163,7 +163,7 @@
           <input type="hidden" name="on0_label" value="Size">
 
           <label for="color-1">Color:</label>
-          <select name="on1" id="color-1" onchange="updateImageByColor(this.value, 'main-img-1')">
+          <select name="on1" id="color-1" onchange="updateImageByColor(this.value, 'ClubTee')">
             <option value="Ivory">Ivory</option>
             <option value="Bay">Bay</option>
             <option value="Blue Jean">Blue Jean</option>
@@ -177,26 +177,9 @@
         </form>
       </div>
 
-<script>
-    // Swap main image when thumbnail clicked
-    function changeImage(mainImageId, newSrc) {
-      document.getElementById(mainImageId).src = newSrc;
-    }
-
-    // Change main image when selecting a color
-    function updateImageByColor(color, mainImageId) {
-      let imageMap = {
-        "Ivory": "https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true",
-        "Bay": "https://github.com/backnineclub/backnineclub.github.io/blob/main/Bay1.jpg?raw=true",
-        "Blue Jean": "https://github.com/backnineclub/backnineclub.github.io/blob/main/BlueJean1.jpg?raw=true"
-      };
-      document.getElementById(mainImageId).src = imageMap[color];
-    }
-</script>
-
       <!-- Product 2 -->
       <div class="product">
-        <img id="main-img-2" src="https://github.com/backnineclub/backnineclub.github.io/blob/main/HIOball.jpg?raw=true" alt="One of a Kind Ball" class="main-img">
+        <img id="BreakyBall" src="https://github.com/backnineclub/backnineclub.github.io/blob/main/BreakyBall.jpg?raw=true" alt="One of a Kind Ball" class="main-img">
         <div class="thumbnails">
         </div>
         <h2>One of a Kind Ball</h2>
@@ -230,10 +213,10 @@
 
       <!-- Product 3 -->
       <div class="product">
-        <img id="main-img-3" src="https://raw.githubusercontent.com/backnineclub/backnineclub.github.io/main/PB7.jpg" alt="Breakfast Ball Tee" class="main-img">
+        <img id="BreakyBall" src="https://raw.githubusercontent.com/backnineclub/backnineclub.github.io/main/PB7.jpg" alt="Breakfast Ball Tee" class="main-img">
         <div class="thumbnails">
-          <img src="https://raw.githubusercontent.com/backnineclub/backnineclub.github.io/main/PB7.jpg" onclick="swapImage('main-img-3', this.src)">
-          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/HIOball.jpg?raw=true" onclick="swapImage('main-img-3', this.src)">
+          <img src="https://raw.githubusercontent.com/backnineclub/backnineclub.github.io/main/PB7.jpg" onclick="swapImage('BreakyBall', this.src)">
+          <img src="https://github.com/backnineclub/backnineclub.github.io/blob/main/BreakyBall.jpg?raw=true" onclick="swapImage('BreakyBall', this.src)">
         </div>
         <h2>Breakfast Ball Tee</h2>
         <p><strong>$45.00 CAD</strong></p>
@@ -269,7 +252,27 @@
           <input type="submit" value="Add to Cart">
         </form>
       </div>
+<script>
+    function updateClubTee(color) {
+      let image = document.getElementById("ClubTee");
+      if (color === "Ivory") {
+        image.src = "https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true";
+      } else if (color === "Bay") {
+        image.src = "https://github.com/backnineclub/backnineclub.github.io/blob/main/Bay1.jpg?raw=true";
+      } else if (color === "Blue Jean") {
+        image.src = "https://github.com/backnineclub/backnineclub.github.io/blob/main/BlueJean1.jpg?raw=true";
+      }
+    }
 
+    function updateBreakyBall(color) {
+      let image = document.getElementById("BreakyBall");
+      if (color === "White") {
+        image.src = "https://github.com/backnineclub/backnineclub.github.io/blob/main/tee-breakfast.jpg?raw=true";
+      } else if (color === "Navy") {
+        image.src = "https://github.com/backnineclub/backnineclub.github.io/blob/main/tee-breakfast-navy.jpg?raw=true";
+      }
+    }
+  </script>
     </div>
   </div>
 </body>
