@@ -177,19 +177,19 @@
         </form>
       </div>
 <script>
-    // Swap main image when thumbnail clicked
-    function changeImage(mainImageId, newSrc) {
-      document.getElementById(mainImageId).src = newSrc;
+    // Swap Club Tee when thumbnail clicked
+    function changeImage(ClubTee, newSrc) {
+      document.getElementById(ClubTee).src = newSrc;
     }
 
-    // Change main image when selecting a color
-    function updateImageByColor(color, mainImageId) {
+    // Change ClubTee when selecting a color
+    function updateImageByColor(color, ClubTee) {
       let imageMap = {
         "Ivory": "https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true",
         "Bay": "https://github.com/backnineclub/backnineclub.github.io/blob/main/Bay1.jpg?raw=true",
         "Blue Jean": "https://github.com/backnineclub/backnineclub.github.io/blob/main/BlueJean1.jpg?raw=true"
       };
-      document.getElementById(mainImageId).src = imageMap[color];
+      document.getElementById(ClubTee).src = imageMap[color];
     }
 </script>
 
