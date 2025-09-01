@@ -208,99 +208,156 @@
 
     <div class="grid">
 
-      <!-- Product 1 -->
-      <div class="product">
-        <h2>Back Nine Club Tee</h2>
-        <img id="clubTeeMain" src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true" alt="Back Nine Club Tee" class="main-img">
-        <div id="clubTeeThumbs" class="thumbnails"></div>
+<!-- ...[existing code above remains unchanged]... -->
 
-        <label>Color:</label>
-        <select id="clubTeeColor" onchange="updateProductGallery('clubTee')">
-          <option value="ivory">Ivory</option>
-          <option value="bay">Bay</option>
-          <option value="blue">Blue Jean</option>
-        </select><br><br>
+<!-- Product 1 -->
+<div class="product">
+  <h2>Back Nine Club Tee</h2>
+  <img id="clubTeeMain" src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true" alt="Back Nine Club Tee" class="main-img">
+  <div id="clubTeeThumbs" class="thumbnails"></div>
 
-        <label>Size:</label>
-        <select id="clubTeeSize">
-          <option>S</option>
-          <option>M</option>
-          <option>L</option>
-          <option>XL</option>
-          <option>XXL</option>
-        </select><br><br>
+  <label>Color:</label>
+  <select id="clubTeeColor" onchange="updateProductGallery('clubTee')">
+    <option value="ivory">Ivory</option>
+    <option value="bay">Bay</option>
+    <option value="blue">Blue Jean</option>
+  </select><br><br>
 
-        <p>$42.00 CAD</p>
-        <div id="paypal-container-YKZLW5R7KYSJW"></div>
+  <label>Size:</label>
+  <select id="clubTeeSize">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+    <option>XXL</option>
+  </select><br><br>
+
+  <p>$42.00 CAD</p>
+  <button class="add-to-cart" onclick="addToCart(
+    'Back Nine Club Tee',
+    42.00,
+    document.getElementById('clubTeeSize').value,
+    document.getElementById('clubTeeColor').value
+  )">Add to Cart</button>
+</div>
+
+<!-- Product 2 -->
+<div class="product">
+  <h2>One of a Kind Ball</h2>
+  <img id="ballMain" src="https://raw.githubusercontent.com/backnineclub/backnineclub.github.io/refs/heads/main/HIOball.jpg" alt="HIO Ball" class="main-img">
+  <div id="ballThumbs" class="thumbnails"></div>
+
+  <label>Color:</label>
+  <select id="ballColor" onchange="updateProductGallery('ball')">
+    <option value="white">White</option>
+    <option value="gold">Gold</option>
+  </select><br><br>
+
+  <label>Size:</label>
+  <select id="ballSize">
+    <option>N/A</option>
+  </select><br><br>
+
+  <p>$999,999.00 CAD</p>
+  <button class="add-to-cart" onclick="addToCart(
+    'One of a Kind Ball',
+    999999.00,
+    document.getElementById('ballSize').value,
+    document.getElementById('ballColor').value
+  )">Add to Cart</button>
+</div>
+
+<!-- Product 3 -->
+<div class="product">
+  <h2>Drive Society Tee</h2>
+  <img id="driveTeeMain" src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true" alt="Drive Society Tee" class="main-img">
+  <div id="driveTeeThumbs" class="thumbnails"></div>
+
+  <label>Color:</label>
+  <select id="driveTeeColor" onchange="updateProductGallery('driveTee')">
+    <option value="ivory">Ivory</option>
+    <option value="bay">Bay</option>
+    <option value="blue">Blue Jean</option>
+  </select><br><br>
+
+  <label>Size:</label>
+  <select id="driveTeeSize">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+    <option>XXL</option>
+  </select><br><br>
+
+  <p>$42.00 CAD</p>
+  <button class="add-to-cart" onclick="addToCart(
+    'Drive Society Tee',
+    42.00,
+    document.getElementById('driveTeeSize').value,
+    document.getElementById('driveTeeColor').value
+  )">Add to Cart</button>
+</div>
+
+<!-- ...[rest of your code remains unchanged]... -->
+
+<!-- Update Cart & Add-to-Cart Logic -->
 <script>
-  paypal.HostedButtons({
-    hostedButtonId: "YKZLW5R7KYSJW",
-  }).render("#paypal-container-YKZLW5R7KYSJW")
+  let cart = [];
+  function toggleCart() {
+    document.getElementById('cart').classList.toggle('active');
+  }
+
+  function addToCart(name, price, size='', color='') {
+    // Add the product to the cart array
+    cart.push({name, price, size, color});
+    updateCart();
+    // Open cart sidebar after adding
+    document.getElementById('cart').classList.add('active');
+  }
+
+  function updateCart() {
+    const cartItems = document.getElementById('cart-items');
+    cartItems.innerHTML = '';
+    let total = 0;
+    cart.forEach((item, i) => {
+      total += item.price;
+      cartItems.innerHTML += `<div class="cart-item">
+        <strong>${item.name}</strong> - $${item.price.toFixed(2)} CAD<br>
+        ${item.size && item.size !== 'N/A' ? 'Size: ' + item.size + '<br>' : ''}
+        ${item.color && item.color !== 'N/A' ? 'Color: ' + item.color + '<br>' : ''}
+        <button onclick="removeFromCart(${i})" style="margin-top:5px;background:red;color:#fff;border:none;border-radius:3px;padding:2px 6px;">Remove</button>
+      </div>`;
+    });
+    document.getElementById('cart-total').innerText = total.toFixed(2);
+    document.getElementById('cart-count').innerText = cart.length;
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+  }
+
+  // Example checkout: you may want to replace this with your PayPal integration later
+  function checkout() {
+    if (cart.length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
+    // Simple summary for demo
+    let summary = "Order Summary:\n";
+    let total = 0;
+    cart.forEach(item => {
+      summary += `${item.name} (${item.color}, ${item.size}) - $${item.price.toFixed(2)}\n`;
+      total += item.price;
+    });
+    summary += `Total: $${total.toFixed(2)} CAD\n\nProceed to PayPal (not implemented here)?`;
+    alert(summary);
+    // Integration with PayPal cart checkout happens here.
+  }
+
+  // Update thumbnails logic...
+  // ...[your updateProductGallery and window.onload code remains as before]...
 </script>
-      </div>
-
-      <!-- Product 2 -->
-      <div class="product">
-        <h2>One of a Kind Ball</h2>
-        <img id="ballMain" src="https://raw.githubusercontent.com/backnineclub/backnineclub.github.io/refs/heads/main/HIOball.jpg" alt="HIO Ball" class="main-img">
-        <div id="ballThumbs" class="thumbnails"></div>
-
-        <label>Color:</label>
-        <select id="ballColor" onchange="updateProductGallery('ball')">
-          <option value="ivory">Ivory</option>
-          <option value="bay">Bay</option>
-          <option value="blue">Blue Jean</option>
-        </select><br><br>
-
-        <label>Size:</label>
-        <select id="ballSize">
-          <option>N/A</option>
-        </select><br><br>
-
-        <p>$999,999.00 CAD</p>
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-          <input type="hidden" name="cmd" value="_cart">
-          <input type="hidden" name="business" value="zach@backnineclub.ca">
-          <input type="hidden" name="item_name" value="One of a Kind Ball">
-          <input type="hidden" name="amount" value="999,999.00">
-          <input type="hidden" name="currency_code" value="CAD">
-          <input type="submit" value="Add to Cart">
-        </form>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="product">
-        <h2>Drive Society Tee</h2>
-        <img id="driveTeeMain" src="https://github.com/backnineclub/backnineclub.github.io/blob/main/ivory1.jpg?raw=true" alt="Drive Society Tee" class="main-img">
-        <div id="driveTeeThumbs" class="thumbnails"></div>
-
-        <label>Color:</label>
-        <select id="driveTeeColor" onchange="updateProductGallery('driveTee')">
-          <option value="ivory">Ivory</option>
-          <option value="bay">Bay</option>
-          <option value="blue">Blue Jean</option>
-        </select><br><br>
-
-        <label>Size:</label>
-        <select id="driveTeeSize">
-          <option>S</option>
-          <option>M</option>
-          <option>L</option>
-          <option>XL</option>
-          <option>XXL</option>
-        </select><br><br>
-
-        <p>$42.00 CAD</p>
-        <div id="paypal-container-MWXXP9TZDCH6Q"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "MWXXP9TZDCH6Q",
-  }).render("#paypal-container-MWXXP9TZDCH6Q")
-</script>
-      </div>
-
-    </div>
-  </div>
 
 <script>
   // Image sets for each product & color
