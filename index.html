@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script 
+  src="https://www.paypal.com/sdk/js?client-id=BAAZsE8RfRS2b3yB8El5E42RZTq52BeK4z_NBE-JoTWJzT04RD1TBx23FOLsniCeYyygwJYLuTcfhGduoQ&components=hosted-buttons&disable-funding=venmo&currency=CAD">
+</script>
   <meta charset="UTF-8">
   <title>Back Nine Club Store</title>
   <style>
@@ -228,14 +231,12 @@
         </select><br><br>
 
         <p>$42.00 CAD</p>
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-          <input type="hidden" name="cmd" value="_cart">
-          <input type="hidden" name="business" value="zach@backnineclub.ca">
-          <input type="hidden" name="item_name" value="Back Nine Club Tee">
-          <input type="hidden" name="amount" value="42.00">
-          <input type="hidden" name="currency_code" value="CAD">
-          <input type="submit" value="Add to Cart">
-        </form>
+        <div id="paypal-container-YKZLW5R7KYSJW"></div>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "YKZLW5R7KYSJW",
+  }).render("#paypal-container-YKZLW5R7KYSJW")
+</script>
       </div>
 
       <!-- Product 2 -->
@@ -290,14 +291,12 @@
         </select><br><br>
 
         <p>$42.00 CAD</p>
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-          <input type="hidden" name="cmd" value="_cart">
-          <input type="hidden" name="business" value="zach@backnineclub.ca">
-          <input type="hidden" name="item_name" value="Drive Society Tee">
-          <input type="hidden" name="amount" value="42.00">
-          <input type="hidden" name="currency_code" value="CAD">
-          <input type="submit" value="Add to Cart">
-        </form>
+        <div id="paypal-container-YKZLW5R7KYSJW"></div>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "YKZLW5R7KYSJW",
+  }).render("#paypal-container-YKZLW5R7KYSJW")
+</script>
       </div>
 
     </div>
