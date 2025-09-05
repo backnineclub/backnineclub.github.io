@@ -22,7 +22,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0.8);
+      background: #000;
       padding: 15px 30px;
       position: sticky;
       top: 0;
@@ -299,6 +299,32 @@
   )">Add to Cart</button>
 </div>
 
+<!-- Product 4 -->
+<div class="product">
+  <h2>One of a Kind Ball V2</h2>
+  <img id="ballMain" src="https://raw.githubusercontent.com/backnineclub/backnineclub.github.io/refs/heads/main/HIOball.jpg" alt="HIO Ball" class="main-img">
+  <div id="ballThumbs" class="thumbnails"></div>
+
+  <label>Color:</label>
+  <select id="ballColor" onchange="updateProductGallery('ball')">
+    <option value="white">White</option>
+    <option value="gold">Gold</option>
+  </select><br><br>
+
+  <label>Size:</label>
+  <select id="ballSize">
+    <option>N/A</option>
+  </select><br><br>
+
+  <p>$999,999.00 CAD</p>
+  <button class="add-to-cart" onclick="addToCart(
+    'One of a Kind Ball',
+    999999.00,
+    document.getElementById('ballSize').value,
+    document.getElementById('ballColor').value
+  )">Add to Cart</button>
+</div>
+    
 <!-- ...[rest of your code remains unchanged]... -->
 
 <!-- Update Cart & Add-to-Cart Logic -->
@@ -405,6 +431,16 @@
         "https://github.com/backnineclub/backnineclub.github.io/blob/main/Orchid2.2.png?raw=true"
       ],
     },
+    ball: {
+        green: [
+          "https://github.com/backnineclub/backnineclub.github.io/blob/main/HIOball.jpg?raw=true",
+          "https://via.placeholder.com/220x220/ddd/000?text=Ball+Side"
+        ],
+        gold: [
+          "https://via.placeholder.com/220x220/ffd700/000?text=Gold+Ball",
+          "https://via.placeholder.com/220x220/daa520/000?text=Ball+Side"
+        ]
+      },
   };
 
   function updateProductGallery(productId) {
