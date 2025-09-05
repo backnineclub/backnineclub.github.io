@@ -150,14 +150,21 @@
       float: right;
       border-radius: 5px;
     }
-    .cart-items { flex: 1; overflow-y: auto; margin-top: 15px; }
-    .cart-item {
-      border-bottom: 1px solid #ccc;
-      padding: 10px 0;
-    }
-    .cart-footer {
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
       margin-top: 15px;
-      text-align: center;
+      margin-bottom: 15px; /* Give space for footer */
+    }
+    
+    .cart-footer {
+      position: sticky;
+      bottom: 0;
+      background: #fff;
+      padding: 10px 0;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+      z-index: 1;
     }
     .checkout-btn {
       background: #0070ba;
@@ -237,8 +244,9 @@
     'Back Nine Club Tee',
     42.00,
     document.getElementById('clubTeeSize').value,
-    document.getElementById('clubTeeColor').value
-  )">Add to Cart</button>
+    document.getElementById('clubTeeColor').value,
+    document.getElementById('clubTeeMain').src
+)">Add to Cart</button>
 </div>
 
 <!-- Product 2 -->
@@ -264,6 +272,7 @@
     999999.00,
     document.getElementById('ballSize').value,
     document.getElementById('ballColor').value
+    document.getElementById('ballMain').src
   )">Add to Cart</button>
 </div>
 
@@ -296,6 +305,7 @@
     42.00,
     document.getElementById('driveTeeSize').value,
     document.getElementById('driveTeeColor').value
+    document.getElementById('driveTeeMain').src
   )">Add to Cart</button>
 </div>
 
@@ -322,10 +332,9 @@
     999999.00,
     document.getElementById('ballSize').value,
     document.getElementById('ballColor').value
+    document.getElementById('ballMain').src
   )">Add to Cart</button>
 </div>
-    
-<!-- ...[rest of your code remains unchanged]... -->
 
 <!-- Update Cart & Add-to-Cart Logic -->
 <script>
@@ -334,13 +343,11 @@
     document.getElementById('cart').classList.toggle('active');
   }
 
-  function addToCart(name, price, size='', color='') {
-    // Add the product to the cart array
-    cart.push({name, price, size, color});
-    updateCart();
-    // Open cart sidebar after adding
-    document.getElementById('cart').classList.add('active');
-  }
+  function addToCart(name, price, size='', color='', image='') {
+  cart.push({name, price, size, color, image});
+  updateCart();
+  document.getElementById('cart').classList.add('active');
+}
 
   function updateCart() {
     const cartItems = document.getElementById('cart-items');
@@ -493,9 +500,11 @@
       cart.forEach((item, i) => {
         total += item.price;
         cartItems.innerHTML += `<div class="cart-item">
-          <strong>${item.name}</strong> - $${item.price} CAD<br>
-          ${item.size ? 'Size: ' + item.size + '<br>' : ''}
-          ${item.color ? 'Color: ' + item.color + '<br>' : ''}
+          <img src="${item.image}" alt="${item.name}" style="width:60px;height:60px;object-fit:cover;border-radius:6px;margin-right:8px;vertical-align:middle;">
+          <strong>${item.name}</strong> - $${item.price.toFixed(2)} CAD<br>
+          ${item.size && item.size !== 'N/A' ? 'Size: ' + item.size + '<br>' : ''}
+          ${item.color && item.color !== 'N/A' ? 'Color: ' + item.color + '<br>' : ''}
+          <button onclick="removeFromCart(${i})" style="margin-top:5px;background:red;color:#fff;border:none;border-radius:3px;padding:2px 6px;">Remove</button>
         </div>`;
         paypalHTML += `
           <input type="hidden" name="item_name_${i+1}" value="${item.name} ${item.size} ${item.color}">
