@@ -266,7 +266,7 @@ function updateCart() {
       <strong>${item.name}</strong> - $${item.price.toFixed(2)} CAD<br>
       ${item.size && item.size !== 'N/A' ? 'Size: ' + item.size + '<br>' : ''}
       ${item.color && item.color !== 'N/A' ? 'Color: ' + item.color + '<br>' : ''}
-      <button onclick="removeFromCart(${i})" style="margin-top:5px;background:red;color:#fff;border:none;border-radius:3px;padding:2px 6px;">Remove</button>
+      <button onclick="removeFromCart(${i})" style="margin-top:5px;background:red;color:#fff;border:none;border-radius:3px;padding:2px 6px;hover background:#005a94;">Remove</button>
     </div>`;
     // PayPal item fields
     paypalHTML += `
